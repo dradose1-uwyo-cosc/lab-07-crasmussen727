@@ -1,8 +1,8 @@
-# Your Name Here
+# Calvin Rasmussen
 # UWYO COSC 1010
-# Submission Date
-# Lab XX
-# Lab Section: 
+# Submission Date: 11/03/24
+# Lab 07
+# Lab Section: 13
 # Sources, people worked with, help given to: 
 # your
 # comments
@@ -18,8 +18,16 @@
 # You will continue to prompt the user until a proper integer value is entered
 
 factorial = 1
-
-print(f"The result of the factorial based on the given bound is {factorial}")
+while True:
+    upper_bound= input("please enter a positive integer as the upper bound for the factorial: ") #gives us the input for the upper_bounds
+    if upper_bound.isdigit(): #checks if it is a integer
+        upper_bound=int(upper_bound)
+        for i in range(1,upper_bound+1): #calculates the factoral
+            factorial *= i
+        print(f"The result of the factorial based on the upper bound is {factorial}")
+        break
+    else:
+        print("you did not enter a positive integer, please try again") #tells you to try again
 
 print("*"*75)
 # Create a while loop that prompts a user for input of an integer values
@@ -38,7 +46,14 @@ print("*"*75)
 # The sum should start at 0 
 
 num_sum = 0 
-
+while True:
+    user_input1= input("Enter a number to add to the sum, or type 'exit' to finish: ")#allows another user input, but for the sum
+    if user_input1.lower() =='exit': #exits out if you enter Exit or EXit or exit
+        break
+    elif user_input1.isdigit() or (user_input1.startswith('-')) and user_input1[1:].isdigit(): #checks to make sure it is a valid number
+        num_sum += int(user_input1)
+    else:
+        print("You did not eneter a valid number. Try again") #allows you to try again
 print(f"Your final sum is {num_sum}")
 
 print("*"*75)
@@ -59,4 +74,30 @@ print("*"*75)
 # Print the result of the equation
 # Again, loop through prompting the user for input until `exit` in any casing is input 
 
-        
+while True:
+    user_input2= input("Enter a two operand calculation (example: 5*6) or type 'exit' to finish: ") #another input, but for the final part of the lab
+    if user_input2.lower() =='exit': #exits if you type exit in any way
+        break
+    if '+' in user_input2: #checks if there is a +
+        operands=user_input2.split('+') #splits the operands
+        result= int(operands[0].strip()) +int(operands[1].strip()) #adds them together
+        print(f"the result of the calculation is : {result}") #prints results
+    elif '-' in user_input2:
+        operands = user_input2.split('-')
+        result = int(operands[0].strip()) - int(operands[1].strip())
+        print(f"the result of the calculation is : {result}")
+    elif '*' in user_input2:
+        operands = user_input2.split('*')
+        result = int(operands[0].strip()) * int(operands[1].strip())
+        print(f"the result of the calculation is : {result}")
+    elif "/" in user_input2:
+        operands = user_input2.split('/')
+        result = int(operands[0].strip()) / int(operands[1].strip())
+        print(f"the result of the calculation is : {result}")
+    elif '%' in user_input2:
+        operands = user_input2.split('%')
+        result = int(operands[0].strip()) % int(operands[1].strip())
+        print(f"the result of the calculation is : {result}")
+    else:
+        print("invalid input. Please enter a calculation the format of 5*6 or 3-1.") #allows you to retry
+        continue
